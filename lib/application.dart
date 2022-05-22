@@ -10,7 +10,6 @@ import 'package:responsive_framework/responsive_wrapper.dart';
 class WeatherApp extends StatelessWidget {
   const WeatherApp({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -48,14 +47,16 @@ class WeatherApp extends StatelessWidget {
           final String route = Get.currentRoute;
           try {
             final String rawRoute = route.replaceAll(RegExp('[?].*'), '');
-            final GetPage? page = AppRouter.routes.firstWhereOrNull((el) => el.name == rawRoute);
+            final GetPage? page =
+                AppRouter.routes.firstWhereOrNull((el) => el.name == rawRoute);
             if (page == null) return;
           } catch (e) {
             Get.log('Error parsing route $route: $e', isError: true);
           }
         })
       ],
-      locale: const Locale('pt', 'BR'), // here you can use Get.deviceLocale when other languages are available
+      locale: const Locale('pt',
+          'BR'), // here you can use Get.deviceLocale when other languages are available
       fallbackLocale: const Locale('pt', 'BR'),
       translationsKeys: AppTranslation.translationsKeys,
       supportedLocales: const [

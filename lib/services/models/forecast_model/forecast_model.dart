@@ -37,4 +37,3 @@ class ForeCastModel {
     return data;
   }
 }
-

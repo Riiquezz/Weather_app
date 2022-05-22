@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
 class CustomToast {
-
   errorToast(context, message) {
     return showCupertinoDialog(
       context: context,
@@ -20,5 +19,4 @@ class CustomToast {
       },
     );
   }
-
 }

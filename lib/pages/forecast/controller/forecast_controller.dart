@@ -15,22 +15,21 @@ class ForecastController extends GetxController {
     getForecastData();
   }
 
-    getForecastData() {
-      String date = DateFormat('yyyy-MM-dd').format(DateTime.now()).toString();
-      forecastData!.then((forecast) {
-        forecast.list!
-            .map((e) => {
-                  // If date in API data contains present day's date do not add it to the new forecastList List
-                  // AND if API data contains 00:00:00, that is, 12am add it to the list
-                  if (!e.dtTxt!.contains(date) && e.dtTxt!.contains('00:00:00'))
-                    {
-                      forecastList.add(e),
-                      location =
-                          '${forecast.city!.name}, ${forecast.city!.country}',
-                    }
-                })
-            .toList();
-      });
-    
+  getForecastData() {
+    String date = DateFormat('yyyy-MM-dd').format(DateTime.now()).toString();
+    forecastData!.then((forecast) {
+      forecast.list!
+          .map((e) => {
+                // If date in API data contains present day's date do not add it to the new forecastList List
+                // AND if API data contains 00:00:00, that is, 12am add it to the list
+                if (!e.dtTxt!.contains(date) && e.dtTxt!.contains('00:00:00'))
+                  {
+                    forecastList.add(e),
+                    location =
+                        '${forecast.city!.name}, ${forecast.city!.country}',
+                  }
+              })
+          .toList();
+    });
   }
 }

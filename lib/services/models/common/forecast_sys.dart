@@ -6,7 +6,8 @@ class ForecastSys {
   int? sunrise;
   int? sunset;
 
-    ForecastSys({this.pod, this.type, this.id, this.country, this.sunrise, this.sunset});
+  ForecastSys(
+      {this.pod, this.type, this.id, this.country, this.sunrise, this.sunset});
 
   ForecastSys.fromJson(Map<String, dynamic> json) {
     pod = json['pod'];

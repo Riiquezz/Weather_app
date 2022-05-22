@@ -23,7 +23,8 @@ class ForecastCity {
   ForecastCity.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
-    coord = json['coord'] != null ? ForecastCoord.fromJson(json['coord']) : null;
+    coord =
+        json['coord'] != null ? ForecastCoord.fromJson(json['coord']) : null;
     country = json['country'];
     population = json['population'];
     timezone = json['timezone'];

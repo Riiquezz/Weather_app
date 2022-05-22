@@ -10,8 +10,6 @@ class ForecastView extends GetView<ForecastController> {
   final Future<ForeCastModel>? forecastData;
   const ForecastView({Key? key, this.forecastData}) : super(key: key);
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +59,8 @@ class ForecastView extends GetView<ForecastController> {
                         ),
                         title: Text(
                           dayOfWeek,
-                          style: const TextStyle(color: Colors.black, fontSize: 15),
+                          style: const TextStyle(
+                              color: Colors.black, fontSize: 15),
                         ),
                         subtitle: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

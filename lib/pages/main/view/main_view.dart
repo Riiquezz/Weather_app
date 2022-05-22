@@ -73,14 +73,13 @@ class MainView extends GetView<MainController> {
                           controller.searchValue = value,
                         }),
                 controller.hasInternetConnection == false
-                        ? Center(
-                            child: Text('common.you_are_offline'.tr,
-                                style: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold)),
-                          )
-                        
+                    ? Center(
+                        child: Text('common.you_are_offline'.tr,
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold)),
+                      )
                     :
                     // Display present day weather data of the city
                     FutureBuilder<WeatherModel>(
@@ -193,31 +192,37 @@ class MainView extends GetView<MainController> {
                                 const SizedBox(
                                   height: 40,
                                 ),
-                                TextButton(onPressed: () {
-                                  Get.to(ForecastView(
-                                        forecastData: controller.forecastData,
-                                      ));
-                                }, style: ButtonStyle(
-              minimumSize: MaterialStateProperty.all<Size>(const Size.fromHeight(56.0)),
-              backgroundColor: MaterialStateProperty.all(Colors.blue),
-              padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.all(8)),
-              shape: MaterialStateProperty.all(
-                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
-            ),
-            child: 
-                                
-            Text(
-              'common.see_next_five_days'.tr,
-              style: const TextStyle(
-                fontSize: 16,
-                color: Colors.white,
-                fontFamily: 'Roboto',
-                overflow: TextOverflow.ellipsis,
-              ),
-              maxLines: 1,
-              softWrap: true,
-            ),)
-                                
+                                TextButton(
+                                  onPressed: () {
+                                    Get.to(ForecastView(
+                                      forecastData: controller.forecastData,
+                                    ));
+                                  },
+                                  style: ButtonStyle(
+                                    minimumSize:
+                                        MaterialStateProperty.all<Size>(
+                                            const Size.fromHeight(56.0)),
+                                    backgroundColor:
+                                        MaterialStateProperty.all(Colors.blue),
+                                    padding: MaterialStateProperty.all<
+                                        EdgeInsetsGeometry>(EdgeInsets.all(8)),
+                                    shape: MaterialStateProperty.all(
+                                        RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8))),
+                                  ),
+                                  child: Text(
+                                    'common.see_next_five_days'.tr,
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.white,
+                                      fontFamily: 'Roboto',
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    maxLines: 1,
+                                    softWrap: true,
+                                  ),
+                                )
                               ],
                             );
                           }
@@ -226,8 +231,8 @@ class MainView extends GetView<MainController> {
                             child: Center(
                               child: CircularProgressIndicator(
                                 backgroundColor: Colors.blue,
-                                valueColor:
-                                    AlwaysStoppedAnimation<Color>(Colors.white70),
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                    Colors.white70),
                                 strokeWidth: 5.0,
                               ),
                             ),

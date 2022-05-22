@@ -36,7 +36,8 @@ class WeatherModel {
       this.cod});
 
   WeatherModel.fromJson(Map<String, dynamic> json) {
-    coord = json['coord'] != null ? ForecastCoord.fromJson(json['coord']) : null;
+    coord =
+        json['coord'] != null ? ForecastCoord.fromJson(json['coord']) : null;
     if (json['weather'] != null) {
       weather = <ForecastWeather>[];
       json['weather'].forEach((v) {
