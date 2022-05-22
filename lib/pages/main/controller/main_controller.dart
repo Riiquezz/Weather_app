@@ -28,6 +28,7 @@ class MainController extends GetxController {
     super.onInit();
     await isConnectedToInternet();
     await getWeatherData();
+    await getForecastData();
   }
 
   Future<bool> isConnectedToInternet() async {
@@ -53,5 +54,10 @@ class MainController extends GetxController {
   Future<void> getWeatherData() async {
     WeatherService weatherService = WeatherService();
     weatherData = weatherService.getWeatherData(cityName: 'São Paulo');
+  }
+
+  Future<void> getForecastData() async {
+    WeatherService weatherService = WeatherService();
+    forecastData = weatherService.getWeatherForecastData(cityName: 'São Paulo');
   }
 }

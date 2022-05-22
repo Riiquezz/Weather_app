@@ -1,9 +1,7 @@
 import 'package:cloudwalk_weather/components/weather_icon.dart';
 import 'package:cloudwalk_weather/pages/forecast/controller/forecast_controller.dart';
-import 'package:cloudwalk_weather/services/models/forecast_model/forecast_model.dart';
 import 'package:cloudwalk_weather/utils/date_converter.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
 class ForecastView extends GetView<ForecastController> {
@@ -14,21 +12,20 @@ class ForecastView extends GetView<ForecastController> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('common.see_next_five_days'.tr),
+        title: Text('common.see_weather_forecast'.tr.tr,
+            style: const TextStyle(color: Colors.black)),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
+          onPressed: () => Get.back(),
+        ),
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
         child: Column(
           children: [
-            Text(
-              'common.see_weather_forecast'.tr,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 19,
-                  fontWeight: FontWeight.bold),
-            ),
             const SizedBox(
               height: 20,
             ),

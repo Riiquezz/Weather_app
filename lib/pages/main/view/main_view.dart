@@ -1,6 +1,5 @@
 import 'package:cloudwalk_weather/components/weather_icon.dart';
 import 'package:cloudwalk_weather/exceptions/network_error.dart';
-import 'package:cloudwalk_weather/pages/forecast/view/forecast_view.dart';
 import 'package:cloudwalk_weather/pages/main/controller/main_controller.dart';
 import 'package:cloudwalk_weather/router/routes.dart';
 import 'package:cloudwalk_weather/services/datasource/weather_service.dart';
@@ -8,8 +7,6 @@ import 'package:cloudwalk_weather/services/models/weather_model/weather_model.da
 import 'package:cloudwalk_weather/utils/date_converter.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class MainView extends GetView<MainController> {
@@ -196,7 +193,8 @@ class MainView extends GetView<MainController> {
                                   onPressed: () {
                                     print('forecast data  ' +
                                         controller.forecastData.toString());
-                                    Get.toNamed(Routes.forecast, arguments: controller.forecastData);
+                                    Get.toNamed(Routes.forecast,
+                                        arguments: controller.forecastData);
                                   },
                                   style: ButtonStyle(
                                     minimumSize:

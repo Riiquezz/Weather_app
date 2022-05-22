@@ -17,5 +17,5 @@ final Map<String, String> common = {
   'common.see_weather_updates': 'Veja as atualizações do tempo! :)',
   'common.see_weather_updates_description':
       'Acompanhe o clima atual, se precisar,\n pode pesquisar acima outras cidades!',
-  'common.see_weather_forecast': 'Veja o clima para o próximo dia :)',
+  'common.see_weather_forecast': 'Veja o clima para os próximos dias :)',
 };
