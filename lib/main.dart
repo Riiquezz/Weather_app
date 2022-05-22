@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cloudwalk_weather/application.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
@@ -8,11 +9,10 @@ Future<void> main() async {
 
   runZonedGuarded(
     () {
-      runApp(WeatherApp());
+      runApp(const WeatherApp());
     },
     (error, stackTrace) {
-      print('Caught error: $error');
-      print(stackTrace);
+      throw error;
     },
   );
 }

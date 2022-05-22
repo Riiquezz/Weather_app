@@ -1,7 +1,14 @@
+import 'package:cloudwalk_weather/router/router.dart';
+import 'package:cloudwalk_weather/router/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get.dart';
+import 'package:responsive_framework/responsive_wrapper.dart';
 
 class WeatherApp extends StatelessWidget {
+  const WeatherApp({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -31,41 +38,17 @@ class WeatherApp extends StatelessWidget {
       title: 'Kenlo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: KenloColors.white,
-        textTheme: kenloTextTheme,
-        primaryColor: KenloColors.primary,
-        appBarTheme: AppBarTheme(
-          iconTheme: const IconThemeData(color: TokensColor.colorNeutral70),
-          backgroundColor: KenloColors.white,
-          actionsIconTheme: IconThemeData(color: KenloColors.primary),
-          titleTextStyle: kenloTextTheme.subtitle1,
-          toolbarTextStyle: TextStyle(color: KenloColors.primary),
-        ),
-        tabBarTheme: TabBarTheme(
-          labelStyle: kenloTextTheme.bodyText1,
-          indicatorSize: TabBarIndicatorSize.tab,
-          labelColor: KenloColors.kenloRed,
-          unselectedLabelColor: TokensColor.colorNeutral70,
-          indicator: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                color: KenloColors.kenloRed,
-                width: 2,
-              ),
-            ),
-          ),
-        ),
+        scaffoldBackgroundColor: Colors.white,
       ),
-      initialRoute: isAuth ? Routes.main : Routes.login,
-      getPages: KenloRouter.routes,
+      initialRoute: Routes.main,
+      getPages: AppRouter.routes,
       navigatorObservers: [
         GetObserver((_) async {
           final String route = Get.currentRoute;
           try {
             final String rawRoute = route.replaceAll(RegExp('[?].*'), '');
-            final GetPage? page = KenloRouter.routes.firstWhereOrNull((el) => el.name == rawRoute);
+            final GetPage? page = AppRouter.routes.firstWhereOrNull((el) => el.name == rawRoute);
             if (page == null) return;
-            await analytics.setCurrentScreen(page.title!);
           } catch (e) {
             Get.log('Error parsing route $route: $e', isError: true);
           }
@@ -73,7 +56,6 @@ class WeatherApp extends StatelessWidget {
       ],
       locale: const Locale('pt', 'BR'), // use Get.deviceLocale when other languages are available
       fallbackLocale: const Locale('pt', 'BR'),
-      translationsKeys: AppTranslation.translationsKeys,
       supportedLocales: const [
         Locale('pt', 'BR'),
       ],

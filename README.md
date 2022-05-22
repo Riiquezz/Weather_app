@@ -1,16 +1,48 @@
-# cloudwalk_weather
+# Weather Project
 
-A new Flutter project.
+> Este projeto tem como objetivo a criação de um aplicativo para verificar a previsão do tempo.
 
-## Getting Started
+<br>
 
-This project is a starting point for a Flutter application.
+## 💻 Pré-requisitos
 
-A few resources to get you started if this is your first Flutter project:
+Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- Você instalou a versão mais recente do `Flutter / Dart`
+- Você tem uma máquina `Windows / Linux / Mac`.
+  <br>
+  <br>
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🚀 Para instalar, rode os seguintes comandos:
+
+```
+Flutter pub get
+```
+
+### Rodando o projeto:
+
+```
+Flutter run
+```
+
+## 🤝 Time
+
+<table>
+  <tr>
+    <td style="vertical-align:middle">
+      <a href="https://www.linkedin.com/in/henrique-pomatti-dos-santos-641bb9125/">
+        <img src="./assets/readme/images/henrique.jpg" width="100px;" alt="Henrique Pomatti"/><br>
+        <sub>
+          <b>Henrique Pomatti</b>
+        </sub>
+      </a>
+    </td>
+    
+  </tr>
+</table>
+
+## 📝 Licença
+
+Esse projeto está sob licença pública!
+
+[⬆ Voltar ao topo](#nome-do-projeto)<br>
