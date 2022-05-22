@@ -7,8 +7,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
 class ForecastView extends GetView<ForecastController> {
-  final Future<ForeCastModel>? forecastData;
-  const ForecastView({Key? key, this.forecastData}) : super(key: key);
+  const ForecastView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

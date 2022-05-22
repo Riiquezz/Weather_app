@@ -194,9 +194,9 @@ class MainView extends GetView<MainController> {
                                 ),
                                 TextButton(
                                   onPressed: () {
-                                    Get.to(ForecastView(
-                                      forecastData: controller.forecastData,
-                                    ));
+                                    print('forecast data  ' +
+                                        controller.forecastData.toString());
+                                    Get.toNamed(Routes.forecast, arguments: controller.forecastData);
                                   },
                                   style: ButtonStyle(
                                     minimumSize:

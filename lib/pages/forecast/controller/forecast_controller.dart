@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class ForecastController extends GetxController {
-  late final Future<ForeCastModel>? forecastData;
+  final argumentsData = Get.arguments;
 
   List<ForecastList> forecastList = [];
   String location = '';
@@ -16,8 +16,9 @@ class ForecastController extends GetxController {
   }
 
   getForecastData() {
+    print(argumentsData);
     String date = DateFormat('yyyy-MM-dd').format(DateTime.now()).toString();
-    forecastData!.then((forecast) {
+    argumentsData.then((forecast) {
       forecast.list!
           .map((e) => {
                 // If date in API data contains present day's date do not add it to the new forecastList List
