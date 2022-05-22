@@ -1,3 +1,4 @@
+import 'package:cloudwalk_weather/intl/app_translation.dart';
 import 'package:cloudwalk_weather/router/router.dart';
 import 'package:cloudwalk_weather/router/routes.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +19,10 @@ class WeatherApp extends StatelessWidget {
     ]);
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
-        statusBarColor: Colors.white,
-        systemNavigationBarColor: Colors.white,
-        systemNavigationBarIconBrightness: Brightness.dark,
-        statusBarBrightness: Brightness.dark,
+        statusBarColor: Colors.black,
+        systemNavigationBarColor: Colors.black,
+        systemNavigationBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.light,
       ),
     );
     return GetMaterialApp(
@@ -54,8 +55,9 @@ class WeatherApp extends StatelessWidget {
           }
         })
       ],
-      locale: const Locale('pt', 'BR'), // use Get.deviceLocale when other languages are available
+      locale: const Locale('pt', 'BR'), // here you can use Get.deviceLocale when other languages are available
       fallbackLocale: const Locale('pt', 'BR'),
+      translationsKeys: AppTranslation.translationsKeys,
       supportedLocales: const [
         Locale('pt', 'BR'),
       ],
