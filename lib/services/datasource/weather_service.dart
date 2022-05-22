@@ -15,7 +15,10 @@ class WeatherService {
 
     final response = await http.get(Uri.parse(finalUrl));
 
+    print(response);
+
     if (response.statusCode == 200) {
+      print('Response body: ${response.body}');
       return WeatherModel.fromJson(jsonDecode(response.body));
     } else {
       throw Exception("Error getting weather forecast");
@@ -32,7 +35,10 @@ class WeatherService {
 
     final response = await http.get(Uri.parse(finalUrl));
 
+    print(response);
+
     if (response.statusCode == 200) {
+      print('Response body: ${response.body}');
       return ForeCastModel.fromJson(jsonDecode(response.body));
     } else {
       throw Exception("Error getting weather forecast");

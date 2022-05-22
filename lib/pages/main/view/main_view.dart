@@ -1,5 +1,6 @@
 import 'package:cloudwalk_weather/components/weather_icon.dart';
 import 'package:cloudwalk_weather/exceptions/network_error.dart';
+import 'package:cloudwalk_weather/pages/forecast/view/forecast_view.dart';
 import 'package:cloudwalk_weather/pages/main/controller/main_controller.dart';
 import 'package:cloudwalk_weather/router/routes.dart';
 import 'package:cloudwalk_weather/services/datasource/weather_service.dart';
@@ -21,8 +22,11 @@ class MainView extends GetView<MainController> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(FluentIcons.book_information_24_regular, color: Colors.black, size: 30), 
-          onPressed: () {  },
+          icon: const Icon(FluentIcons.book_information_24_regular,
+              color: Colors.black, size: 30),
+          onPressed: () {
+            controller.webview('https://github.com/Riiquezz/weather_app');
+          },
         ),
         centerTitle: true,
         title: Text(
@@ -42,8 +46,8 @@ class MainView extends GetView<MainController> {
                         onPressed: () async {
                           if (controller.searchValue.isNotEmpty) {
                             if (controller.hasInternetConnection == false) {
-                              CustomToast()
-                                  .errorToast(context, 'common.network_error'.tr);
+                              CustomToast().errorToast(
+                                  context, 'common.network_error'.tr);
                             } else {
                               controller.cityName = controller.searchValue;
 
@@ -55,8 +59,8 @@ class MainView extends GetView<MainController> {
                                       cityName: controller.cityName);
                             }
                           } else {
-                            CustomToast().errorToast(
-                                context, 'common.field_error'.tr);
+                            CustomToast()
+                                .errorToast(context, 'common.field_error'.tr);
                           }
                         },
                       ),
@@ -75,75 +79,28 @@ class MainView extends GetView<MainController> {
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold)),
                         )
-                      : 
-                      
-                      FutureBuilder<WeatherModel>(
-                          future: controller.weatherData,
-                          builder: (context, snapshot) {
-                            if (snapshot.hasData) {
-                              return Column(
-                                children: [
-                                  Text(
-                                    snapshot.data!.name!,
+                      : Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Center(
+                                child: Text('common.see_weather_updates'.tr,
                                     style: const TextStyle(
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  
-                                  
-                                  Text(
-                                    '${snapshot.data!.main!.temp!.toStringAsFixed(2)}°C',
-                                    style: const TextStyle(
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                    '${snapshot.data!.main!.humidity!.toStringAsFixed(2)}%',
-                                    style: const TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                    '${snapshot.data!.main!.pressure!.toStringAsFixed(2)}hPa',
-                                    style: const TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                    '${snapshot.data!.wind!.speed!.toStringAsFixed(2)}m/s',
-                                    style: const TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                    '${snapshot.data!.wind!.deg!.toStringAsFixed(2)}°',
-                                    style: const TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ],
-                              );
-                          }
-                          if (snapshot.hasError) {
-                            return Text(
-                              '${snapshot.error}',
-                              style: const TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                            );
-                          }
-                          return const Center(
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                  Colors.black),
-                              
+                                        color: Colors.black,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold)),
+                              ),
                             ),
-                          );
-                        }
-                      )
-                      
-                      
-                     
+                            Center(
+                              child: Text(
+                                  'common.see_weather_updates_description'.tr,
+                                  style: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600)),
+                            ),
+                          ],
+                        )
                   :
                   // Display present day weather data of the city
                   FutureBuilder<WeatherModel>(
@@ -151,12 +108,12 @@ class MainView extends GetView<MainController> {
                       builder: (BuildContext context,
                           AsyncSnapshot<WeatherModel> data) {
                         if (data.connectionState == ConnectionState.none &&
-                            data.hasData == null) {
+                            data.hasData == false) {
                           return Text(
                             'common.no_data_for_this_city'.tr,
                             textAlign: TextAlign.center,
-                            style:
-                                const TextStyle(color: Colors.black, fontSize: 17),
+                            style: const TextStyle(
+                                color: Colors.black, fontSize: 17),
                           );
                         } else if (data.hasData) {
                           //Store weather data in model class and use that to fill all the other fields
@@ -259,7 +216,9 @@ class MainView extends GetView<MainController> {
                               ),
                               ElevatedButton(
                                   onPressed: () {
-                                    Get.to(Routes.forecast, arguments: controller.forecastData);
+                                    Get.to(ForecastView(
+                                      forecastData: controller.forecastData,
+                                    ));
                                   },
                                   child: Text(
                                     'common.see_next_five_days'.tr,
