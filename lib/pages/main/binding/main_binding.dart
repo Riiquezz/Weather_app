@@ -8,5 +8,8 @@ class MainBinding extends Bindings {
     Get.lazyPut<MainController>(
       () => MainController(),
     );
+    Get.lazyPut<ForecastController>(
+      () => ForecastController(),
+    );
   }
 }

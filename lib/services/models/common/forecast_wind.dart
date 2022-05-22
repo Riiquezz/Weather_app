@@ -6,9 +6,9 @@ class ForecastWind {
   ForecastWind({this.speed, this.deg, this.gust});
 
   ForecastWind.fromJson(Map<String, dynamic> json) {
-    speed = json['speed'].toDouble();
+    speed = json['speed'];
     deg = json['deg'];
-    gust = json['gust'].toDouble();
+    gust = json['gust'];
   }
 
   Map<String, dynamic> toJson() {

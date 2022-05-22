@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cloudwalk_weather/services/datasource/weather_service.dart';
 import 'package:cloudwalk_weather/services/models/forecast_model/forecast_model.dart';
 import 'package:cloudwalk_weather/services/models/weather_model/weather_model.dart';
 import 'package:get/get.dart';
@@ -23,11 +24,10 @@ class MainController extends GetxController {
   set hasInternetConnection(bool value) => _hasInternetConnection.value = value;
 
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
-    _hasInternetConnection.value = true;
-    weatherData;
-    forecastData;
+    await isConnectedToInternet();
+    await getWeatherData();
   }
 
   Future<bool> isConnectedToInternet() async {
@@ -48,5 +48,10 @@ class MainController extends GetxController {
     } else {
       throw 'Could not launch $url';
     }
+  }
+
+  Future<void> getWeatherData() async {
+    WeatherService weatherService = WeatherService();
+    weatherData = weatherService.getWeatherData(cityName: 'São Paulo');
   }
 }
