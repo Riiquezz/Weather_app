@@ -13,13 +13,13 @@ class AppRouter {
     GetPage(
       title: 'Main',
       name: Routes.main,
-      page: () => MainView(),
+      page: () => const MainView(),
       binding: MainBinding(),
     ),
     GetPage(
       title: 'Forecast',
       name: Routes.forecast,
-      page: () => ForecastView(),
+      page: () => const ForecastView(),
       binding: ForecastBinding(),
     ),
   ];

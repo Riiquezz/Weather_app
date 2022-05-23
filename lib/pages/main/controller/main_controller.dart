@@ -10,7 +10,7 @@ class MainController extends GetxController {
   Future<WeatherModel>? weatherData;
   Future<ForeCastModel>? forecastData;
 
-  final RxString _cityName = ''.obs;
+  final RxString _cityName = 'Sao Paulo'.obs;
   final RxString _searchValue = ''.obs;
 
   final RxBool _hasInternetConnection = true.obs;
@@ -29,6 +29,18 @@ class MainController extends GetxController {
     await isConnectedToInternet();
     await getWeatherData();
     await getForecastData();
+  }
+
+  Future updateSearchValue() async {
+    cityName = searchValue;
+
+                                weatherData = WeatherService()
+                                    .getWeatherData(
+                                        cityName: cityName);
+                                        
+                                forecastData = WeatherService()
+                                    .getWeatherForecastData(
+                                        cityName: cityName);
   }
 
   Future<bool> isConnectedToInternet() async {
@@ -52,12 +64,14 @@ class MainController extends GetxController {
   }
 
   Future<void> getWeatherData() async {
+    print('Weather data is being fetched');
     WeatherService weatherService = WeatherService();
-    weatherData = weatherService.getWeatherData(cityName: 'São Paulo');
+    weatherData = weatherService.getWeatherData(cityName: _cityName.value);
   }
 
   Future<void> getForecastData() async {
+    print('Forecast data is being fetched');
     WeatherService weatherService = WeatherService();
-    forecastData = weatherService.getWeatherForecastData(cityName: 'São Paulo');
+    forecastData = weatherService.getWeatherForecastData(cityName: _cityName.value);
   }
 }

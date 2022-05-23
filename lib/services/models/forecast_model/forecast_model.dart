@@ -1,5 +1,5 @@
 import 'package:cloudwalk_weather/services/models/common/forecast_city.dart';
-import 'package:cloudwalk_weather/services/models/forecast_model/forecast_list_model.dart';
+import 'package:cloudwalk_weather/services/models/common/forecast_list_model.dart';
 
 class ForeCastModel {
   String? cod;

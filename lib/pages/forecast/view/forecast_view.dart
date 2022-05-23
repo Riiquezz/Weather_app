@@ -1,5 +1,6 @@
 import 'package:cloudwalk_weather/components/weather_icon.dart';
 import 'package:cloudwalk_weather/pages/forecast/controller/forecast_controller.dart';
+import 'package:cloudwalk_weather/services/models/forecast_model/forecast_model.dart';
 import 'package:cloudwalk_weather/utils/date_converter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,12 +8,15 @@ import 'package:get/get.dart';
 class ForecastView extends GetView<ForecastController> {
   const ForecastView({Key? key}) : super(key: key);
 
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('common.see_weather_forecast'.tr.tr,
+        title: Text('common.see_next_days'.tr,
             style: const TextStyle(color: Colors.black)),
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -22,15 +26,17 @@ class ForecastView extends GetView<ForecastController> {
           onPressed: () => Get.back(),
         ),
       ),
-      body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+      body:
+
+      Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
         child: Column(
           children: [
             const SizedBox(
-              height: 20,
+              height: 30,
             ),
             Expanded(
-                child: ListView.separated(
+                child: Obx(() => ListView.separated(
                     itemCount: controller.forecastList.length,
                     separatorBuilder: (context, index) => Container(
                           height: 1,
@@ -80,6 +86,7 @@ class ForecastView extends GetView<ForecastController> {
                         ),
                       );
                     }))
+            ),
           ],
         ),
       ),

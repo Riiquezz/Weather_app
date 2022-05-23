@@ -1,5 +1,6 @@
 import 'package:cloudwalk_weather/components/weather_icon.dart';
 import 'package:cloudwalk_weather/exceptions/network_error.dart';
+import 'package:cloudwalk_weather/pages/forecast/view/forecast_view.dart';
 import 'package:cloudwalk_weather/pages/main/controller/main_controller.dart';
 import 'package:cloudwalk_weather/router/routes.dart';
 import 'package:cloudwalk_weather/services/datasource/weather_service.dart';
@@ -48,14 +49,7 @@ class MainView extends GetView<MainController> {
                                 CustomToast().errorToast(
                                     context, 'common.network_error'.tr);
                               } else {
-                                controller.cityName = controller.searchValue;
-
-                                controller.weatherData = WeatherService()
-                                    .getWeatherData(
-                                        cityName: controller.cityName);
-                                controller.forecastData = WeatherService()
-                                    .getWeatherForecastData(
-                                        cityName: controller.cityName);
+                                controller.updateSearchValue();
                               }
                             } else {
                               CustomToast()
@@ -79,6 +73,9 @@ class MainView extends GetView<MainController> {
                       )
                     :
                     // Display present day weather data of the city
+
+                    controller.cityName.isNotEmpty ?
+
                     FutureBuilder<WeatherModel>(
                         future: controller.weatherData,
                         builder: (BuildContext context,
@@ -193,8 +190,7 @@ class MainView extends GetView<MainController> {
                                   onPressed: () {
                                     print('forecast data  ' +
                                         controller.forecastData.toString());
-                                    Get.toNamed(Routes.forecast,
-                                        arguments: controller.forecastData);
+                                    Get.toNamed(Routes.forecast, arguments: controller.forecastData);
                                   },
                                   style: ButtonStyle(
                                     minimumSize:
@@ -203,7 +199,7 @@ class MainView extends GetView<MainController> {
                                     backgroundColor:
                                         MaterialStateProperty.all(Colors.blue),
                                     padding: MaterialStateProperty.all<
-                                        EdgeInsetsGeometry>(EdgeInsets.all(8)),
+                                        EdgeInsetsGeometry>(const EdgeInsets.all(8)),
                                     shape: MaterialStateProperty.all(
                                         RoundedRectangleBorder(
                                             borderRadius:
@@ -235,7 +231,16 @@ class MainView extends GetView<MainController> {
                               ),
                             ),
                           );
-                        })
+                        }) : const Center(
+                              child: CircularProgressIndicator(
+                                backgroundColor: Colors.blue,
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                    Colors.white70),
+                                strokeWidth: 5.0,
+                              ),
+                            ),
+                        
+
               ],
             );
           },

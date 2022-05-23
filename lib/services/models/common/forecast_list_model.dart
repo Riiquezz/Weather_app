@@ -11,7 +11,7 @@ class ForecastList {
   ForecastClouds? clouds;
   ForecastWind? wind;
   int? visibility;
-  int? pop;
+  double? pop;
   ForecastSys? sys;
   String? dtTxt;
 
@@ -39,7 +39,7 @@ class ForecastList {
         json['clouds'] != null ? ForecastClouds.fromJson(json['clouds']) : null;
     wind = json['wind'] != null ? ForecastWind.fromJson(json['wind']) : null;
     visibility = json['visibility'];
-    pop = json['pop'];
+    pop = json['pop'].toDouble();
     sys = json['sys'] != null ? ForecastSys.fromJson(json['sys']) : null;
     dtTxt = json['dt_txt'];
   }
