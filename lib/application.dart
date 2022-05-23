@@ -35,7 +35,7 @@ class WeatherApp extends StatelessWidget {
           ResponsiveBreakpoint.resize(800, name: TABLET),
         ],
       ),
-      title: 'Kenlo',
+      title: 'Cloudwalk Weather',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
